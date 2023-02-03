@@ -1,0 +1,39 @@
+{
+  "labels": ["renovate"],
+  "extends": ["config:base"],
+  "ignoreDeps": ["openapitools/openapi-generator-cli"],
+  "packageRules": [
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "enabled": true
+    },
+    {
+      "matchDatasources": ["npm"],
+      "matchPackageNames": [
+        "jest",
+        "ts-jest",
+        "typescript-eslint",
+        "serve",
+        "prettier"
+      ],
+      "matchPackagePatterns": ["^@types/", "^eslint", "^@faker/"],
+      "automerge": true
+    },
+    {
+      "matchDatasources": ["npm"],
+      "matchPackagePatterns": ["^@web3auth/"],
+      "groupName": "web3auth packages"
+    },
+    {
+      "matchDatasources": ["npm"],
+      "matchPackageNames": ["i18next", "react-i18next"],
+      "groupName": "i18next packages"
+    }
+  ]
+}
